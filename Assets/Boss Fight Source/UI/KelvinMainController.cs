@@ -95,6 +95,7 @@ public partial class KelvinMainController : MonoBehaviour
         {
             playerH -= World.jumpHit();
         }
+        playerH += World.rockShoot();
         //set player slider value
         PlayerHealth.value = playerH;
     }

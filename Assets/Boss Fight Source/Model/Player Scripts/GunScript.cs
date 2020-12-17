@@ -16,6 +16,10 @@ public class GunScript : MonoBehaviour
         posB = new Vector3(m.GetColumn(3).x, m.GetColumn(3).y, m.GetColumn(3).z);
 
     }
+
+    public GameObject getLaser() {
+        return laser;
+    }
     public void ShootLaser()
     {
         //create laser
