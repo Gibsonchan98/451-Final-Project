@@ -9,6 +9,7 @@ public partial class KelvinMainController : MonoBehaviour
     public KelvinWorld World;
     public Slider BossHealth, PlayerHealth;
     KelvinSceneNode theRoot;
+    public Camera MainCamera;
     float bossH, playerH;
     public GameObject panel;
     public Text text;
@@ -41,17 +42,20 @@ public partial class KelvinMainController : MonoBehaviour
             Application.Quit();
         }
 
+
+
         PlayerHealthCheck();
         BossStage();
         if (playerH < 1)
         {
-            panel.SetActive(true); 
-
+            panel.SetActive(true);
+           // SceneManager.LoadScene("KelvinBossGame");
             text.text = "GAME OVER";
         }
         if (bossH < 1)
         {
             panel.SetActive(true);
+           // SceneManager.LoadScene("KelvinBossGame");
             text.text = "YOU WON";
         }
     }

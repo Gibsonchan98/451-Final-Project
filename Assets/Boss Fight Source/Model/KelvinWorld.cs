@@ -13,6 +13,7 @@ public class KelvinWorld : MonoBehaviour
     public KelvinAttack3 finalAttack;
     KelvinBulletBehavior bullet;
     public ShootAtRocks rockShot;
+    public AxisFrame AxisFrame;
 
     //public AxisFrame AxisFrame;
     private void Start()
@@ -30,6 +31,7 @@ public class KelvinWorld : MonoBehaviour
         }
 
     }
+
 
     public int bulletHit()
     {
@@ -49,6 +51,8 @@ public class KelvinWorld : MonoBehaviour
         return 0;
     }
 
+
+
     public int swordHit()
     {
         if (attack1.HitPlayer() == true)
@@ -63,7 +67,7 @@ public class KelvinWorld : MonoBehaviour
     {
         if (playerGun.HitBoss() == true)
         {
-            return 1;
+            return 5;
         }
         return 0;
 
