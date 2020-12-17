@@ -11,8 +11,7 @@ public class KelvinBulletBehavior : MonoBehaviour
     float D, t;
     bool hit;
     KelvinSceneNode Node;
-    //HealthInteraction h;
-    // Start is called before the first frame update
+
     void Start()
     {
         t = 80;
