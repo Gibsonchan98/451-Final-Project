@@ -10,8 +10,16 @@ public class PlayerMovement : MonoBehaviour
 
     CharacterController characterController;
     Vector3 moveDir;
-    void Start()
-    {
+
+    public float sensitivity = 150f;
+    public float clampAngle = 85f;
+
+    private float verticalRotation;
+    private float horizontalRotation;
+
+    private void Start() {
+        verticalRotation = transform.localEulerAngles.x;
+        horizontalRotation = transform.eulerAngles.y;
         characterController = GetComponent<CharacterController>();
     }
 
@@ -38,7 +46,30 @@ public class PlayerMovement : MonoBehaviour
             moveDir.y -= gravity * Time.deltaTime;
 
         characterController.Move(moveDir);
+
+        Look();
+
+        if (Input.GetKey(KeyCode.E))
+            Cursor.lockState = CursorLockMode.None;
+
+        if (Input.GetKey(KeyCode.Q))
+            Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     private bool playerJumped => characterController.isGrounded && Input.GetKey(KeyCode.Space);
+
+    private void Look() {
+        float _mouseVertical = -Input.GetAxis("Mouse Y");
+        float _mouseHorizontal = Input.GetAxis("Mouse X");
+
+        verticalRotation += _mouseVertical * sensitivity * Time.deltaTime;
+        horizontalRotation += _mouseHorizontal * sensitivity * Time.deltaTime;
+
+        verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
+
+        transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+        transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+        transform.rotation = Quaternion.Euler(0f, horizontalRotation, 0f);
+    }
 }
