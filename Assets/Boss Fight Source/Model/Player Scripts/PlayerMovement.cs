@@ -55,6 +55,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Q))
             Cursor.lockState = CursorLockMode.Locked;
 
+        if (Vector3.Distance(transform.localPosition, Vector3.zero) > 250f) {
+            transform.localPosition = new Vector3(0, 50, 0);
+        }
+
     }
 
     private bool playerJumped => characterController.isGrounded && Input.GetKey(KeyCode.Space);
